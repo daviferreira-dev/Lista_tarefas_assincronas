@@ -1,0 +1,369 @@
+/* Importa as fontes do Google Fonts para um estilo mais autêntico */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=MedievalSharp&display=swap');
+
+/* Estilos globais para o corpo do documento */
+body {
+    /* Fundo escuro e texturizado, simulando pedra, cinzas ou ruínas de Elden Ring */
+    background: linear-gradient(135deg, #100f0f, #1e1e1e);
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem; /* Padding geral ligeiramente menor para o corpo */
+    position: relative;
+    /* overflow: hidden; -- REMOVIDO para permitir rolagem */
+    font-family: 'MedievalSharp', cursive; /* Fonte principal para o corpo */
+    color: #e0e0e0; /* Cor de texto padrão clara */
+}
+
+/* Adiciona a imagem do Elden Ring como sobreposição de textura no fundo */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Imagem do Elden Ring para o fundo */
+    background-image: url('/fundo-de-elden-ring.jpg'); /* Usando a imagem fornecida */
+    background-size: cover; /* Garante que a imagem cubra toda a área */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Evita repetição da imagem */
+    opacity: 0.15; /* Opacidade ajustada para ser um fundo sutil */
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Estilos para o contêiner principal do aplicativo */
+.main-container {
+    background-color: #1a1a1a; /* Fundo ainda mais escuro para o painel principal */
+    padding: 3rem; /* Padding interno reduzido */
+    border-radius: 0.4rem; /* Bordas menos arredondadas, mais angulares e brutas */
+    /* Sombra profunda e um brilho sutil, como metal antigo */
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.9), /* Sombra principal muito mais forte */
+                0 0 40px rgba(255, 215, 0, 0.25), /* Brilho dourado sutil mais intenso */
+                inset 0 0 20px rgba(0, 0, 0, 0.6); /* Sombra interna mais forte para profundidade */
+    border: 5px solid #3a3a3a; /* Borda mais espessa e sólida, como metal pesado e desgastado */
+    width: 100%;
+    max-width: 500px; /* Largura máxima reduzida */
+    /* Adicionado para permitir rolagem vertical dentro do contêiner se o conteúdo exceder a altura */
+    max-height: 90vh; /* Limita a altura máxima para que ele possa rolar */
+    overflow-y: auto; /* Habilita a barra de rolagem vertical quando necessário */
+    transition: all 0.6s ease-in-out; /* Transição mais longa e dramática */
+    position: relative;
+    /* Adiciona um pseudo-elemento para uma borda interna decorativa */
+    z-index: 1; /* Garante que o container esteja acima da textura de fundo */
+}
+
+/* Estiliza a barra de rolagem para combinar com o tema */
+.main-container::-webkit-scrollbar {
+    width: 12px;
+}
+
+.main-container::-webkit-scrollbar-track {
+    background: #2a2a2a; /* Cor do fundo da trilha da barra de rolagem */
+    border-radius: 10px;
+}
+
+.main-container::-webkit-scrollbar-thumb {
+    background-color: #5a5a5a; /* Cor do "polegar" da barra de rolagem */
+    border-radius: 10px;
+    border: 3px solid #2a2a2a; /* Borda para o polegar */
+}
+
+.main-container::-webkit-scrollbar-thumb:hover {
+    background-color: #ffd700; /* Cor dourada no hover */
+}
+
+
+.main-container::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 2px dashed #4a4a4a; /* Borda pontilhada para um efeito de runa/símbolo */
+    border-radius: 0.3rem;
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 0;
+}
+
+
+.main-container:hover {
+    transform: translateY(-20px) scale(1.04); /* Efeito de leve levantamento e zoom no hover mais pronunciado */
+    box-shadow: 0 35px 70px rgba(0, 0, 0, 1),
+                0 0 50px rgba(255, 215, 0, 0.5); /* Sombra e brilho mais intensos */
+}
+
+/* Estilos para o título do aplicativo */
+.app-title {
+    font-family: 'Cinzel Decorative', serif; /* Fonte mais decorativa para o título */
+    font-size: 3.5rem; /* Tamanho da fonte ligeiramente reduzido */
+    font-weight: 700; /* Mais negrito */
+    color: #ffd700; /* Cor dourada para o título */
+    margin-bottom: 3rem; /* Espaço abaixo do título ligeiramente reduzido */
+    text-align: center;
+    text-shadow: 5px 5px 10px rgba(0, 0, 0, 1), 0 0 25px rgba(255, 215, 0, 0.8); /* Sombra e brilho dourado mais intensos e ominosos */
+    letter-spacing: 0.15em; /* Espaçamento entre letras maior para um visual épico */
+    text-transform: uppercase; /* Maiúsculas para um visual mais épico */
+    position: relative;
+    z-index: 1;
+}
+
+/* Seção de input e botão de adicionar */
+.input-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Espaçamento entre input e botão reduzido */
+    margin-bottom: 2rem; /* Margem inferior reduzida */
+}
+
+/* Estilos para o campo de entrada de texto */
+.task-input {
+    background-color: #2a2a2a; /* Fundo escuro para o input */
+    border: 3px solid #4a4a4a; /* Borda mais escura e espessa */
+    border-radius: 0.5rem; /* Bordas levemente arredondadas */
+    padding: 1rem 1.5rem; /* Padding reduzido */
+    font-size: 1.15rem; /* Tamanho da fonte ligeiramente reduzido */
+    color: #e0e0e0; /* Cor do texto claro */
+    transition: all 0.3s ease-in-out;
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.6); /* Sombra interna mais forte para profundidade */
+    font-family: 'MedievalSharp', cursive;
+}
+
+.task-input::placeholder {
+    color: #8b8b8b; /* Cor do placeholder mais escura e desgastada */
+    font-style: italic;
+}
+
+.task-input:focus {
+    border-color: #ffd700; /* Borda dourada ao focar */
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.6), 0 0 0 5px rgba(255, 215, 0, 0.5); /* Anel de foco dourado mais pronunciado */
+    background-color: #3a3a3a; /* Fundo levemente mais escuro ao focar */
+    outline: none; /* Remove o outline padrão do navegador */
+}
+
+/* Estilos para os botões */
+.add-button, .clear-button {
+    font-family: 'Cinzel Decorative', serif; /* Fonte decorativa para os botões */
+    font-size: 1.2rem; /* Tamanho da fonte ligeiramente reduzido */
+    padding: 1rem 2.2rem; /* Padding reduzido */
+    border-radius: 0.6rem; /* Bordas levemente arredondadas */
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #e0e0e0; /* Cor do texto claro */
+    /* Estilo de botão de metal antigo e pesado */
+    background: linear-gradient(180deg, #4a4a4a, #2a2a2a); /* Gradiente de metal mais escuro */
+    border: 3px solid #6a6a6a; /* Borda de metal mais espessa */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7), inset 0 3px 0 rgba(255, 255, 255, 0.25); /* Sombra e brilho interno mais fortes */
+    transition: all 0.3s ease-in-out;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+}
+
+.add-button:hover {
+    background: linear-gradient(180deg, #5a5a5a, #3a3a3a); /* Gradiente mais claro no hover */
+    transform: translateY(-5px); /* Leve levantamento mais pronunciado */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.9), inset 0 3px 0 rgba(255, 255, 255, 0.4), 0 0 25px rgba(255, 215, 0, 0.6); /* Sombra e brilho dourado mais intensos */
+    border-color: #ffd700; /* Borda dourada no hover */
+    color: #ffd700; /* Texto dourado no hover */
+}
+
+.clear-button {
+    background: linear-gradient(180deg, #7a0000, #4a0000); /* Tons de vermelho escuro e sangrento para deletar */
+    border: 3px solid #a00000;
+}
+
+.clear-button:hover {
+    background: linear-gradient(180deg, #8b0000, #5a0000);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.9), inset 0 3px 0 rgba(255, 255, 255, 0.25), 0 0 25px rgba(255, 0, 0, 0.6);
+    border-color: #ff4500;
+    color: #ff4500;
+}
+
+/* Estilos para a lista de tarefas */
+.task-list {
+    list-style: none; /* Remove marcadores de lista padrão */
+    padding: 0;
+    margin-bottom: 2rem; /* Margem inferior reduzida */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Espaçamento entre os itens da lista reduzido */
+}
+
+/* Estilos para os itens individuais da lista de tarefas */
+.task-item {
+    background-color: #2a2a2a; /* Fundo escuro para os itens */
+    padding: 1.2rem 1.8rem; /* Padding reduzido */
+    border-radius: 0.6rem;
+    border: 3px solid #3a3a3a; /* Borda sutil e mais espessa */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6), inset 0 3px 0 rgba(255, 255, 255, 0.12); /* Sombra e brilho interno mais fortes */
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'MedievalSharp', cursive;
+}
+
+.task-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Textura sutil para cada item, simulando pergaminho desgastado ou pele */
+    background-image: url('https://placehold.co/50x50/222/444?text=WORN_PARCHMENT');
+    background-repeat: repeat;
+    opacity: 0.1; /* Aumenta a opacidade da textura do item */
+    pointer-events: none;
+    z-index: 0;
+}
+
+.task-item:hover {
+    background-color: #353535; /* Fundo mais escuro no hover */
+    transform: translateX(15px); /* Desliza mais para a direita */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8), inset 0 3px 0 rgba(255, 255, 255, 0.25);
+}
+
+/* Estilos para o texto da tarefa */
+.task-text {
+    font-size: 1.2rem; /* Tamanho da fonte ligeiramente reduzido */
+    color: #e0e0e0; /* Cor do texto claro */
+    position: relative; /* Para garantir que o texto fique acima da textura */
+    z-index: 1;
+    flex-grow: 1; /* Permite que o texto ocupe o espaço disponível */
+    margin-right: 1rem; /* Espaçamento antes dos botões de ação */
+}
+
+/* Estilos para tarefas concluídas */
+.task-text.completed {
+    color: #7a7a7a; /* Cor para tarefas concluídas, mais desbotada */
+    text-decoration: line-through;
+    text-decoration-color: #909090; /* Cor da linha */
+    text-decoration-thickness: 2px;
+    font-style: italic; /* Tarefas concluídas com um leve itálico */
+}
+
+/* Contêiner para os botões de ação */
+.task-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem; /* Espaçamento entre os botões de ação reduzido */
+    z-index: 1; /* Garante que os botões fiquem acima da textura */
+}
+
+/* Estilos para os botões de ação (concluir/deletar) */
+.action-button {
+    width: 42px; /* Tamanho ligeiramente menor para botões redondos */
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem; /* Tamanho do ícone ligeiramente reduzido */
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
+    border: 3px solid #6a6a6a; /* Borda para os botões de ação mais espessa */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    color: #e0e0e0; /* Cor do ícone */
+    border-radius: 50%; /* Torna os botões perfeitamente redondos */
+    cursor: pointer;
+}
+
+.action-button.complete-task-button {
+    background-color: #1e8e3e; /* Verde mais escuro e sombrio para concluir */
+    border-color: #1a7a3a;
+}
+.action-button.complete-task-button:hover {
+    background-color: #1a7a3a;
+    transform: scale(1.25); /* Efeito de escala mais pronunciado */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8), 0 0 18px rgba(30, 142, 62, 0.8); /* Sombra e brilho verde mais fortes */
+}
+
+.action-button.incomplete-task-button { /* Para quando a tarefa está incompleta */
+    background-color: #4a4a4a; /* Cinza escuro para desconcluir */
+    border-color: #5a5a5a;
+}
+.action-button.incomplete-task-button:hover {
+    background-color: #5a5a5a;
+    transform: scale(1.25);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8), 0 0 18px rgba(74, 74, 74, 0.8);
+}
+
+
+.action-button.delete-task-button {
+    background-color: #b22222; /* Vermelho mais escuro e intenso para deletar */
+    border-color: #9a1a1a;
+}
+.action-button.delete-task-button:hover {
+    background-color: #9a1a1a;
+    transform: scale(1.25);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8), 0 0 18px rgba(178, 34, 34, 0.8);
+}
+
+/* Estilos para o modal de mensagem */
+.modal-overlay {
+    /* display: none; -- MANTIDO para que o modal não apareça por padrão */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.98); /* Fundo do modal quase opaco para imersão total */
+    display: none; /* GARANTE que o modal esteja oculto por padrão */
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(15px); /* Desfoque ainda mais intenso */
+}
+
+.modal-content {
+    background-color: #0d0d0d; /* Fundo do conteúdo do modal quase preto */
+    padding: 30px; /* Padding reduzido para o modal */
+    border-radius: 0.8rem;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 1), 0 0 40px rgba(255, 215, 0, 0.5); /* Sombra e brilho dourado mais fortes */
+    border: 4px solid #333; /* Borda sutil e mais espessa */
+    width: 90%;
+    max-width: 450px; /* Largura máxima reduzida para o modal */
+    text-align: center;
+    position: relative;
+    animation: fadeInScale 0.7s ease-out; /* Animação de entrada mais longa e dramática */
+    font-family: 'MedievalSharp', cursive;
+}
+
+/* Animação para o modal */
+@keyframes fadeInScale {
+    from { opacity: 0; transform: translateY(-60px) scale(0.75); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.close-modal-button {
+    color: #888; /* Cor do X mais escura */
+    position: absolute;
+    top: 15px; /* Posição ligeiramente ajustada */
+    right: 15px; /* Posição ligeiramente ajustada */
+    font-size: 2.5rem; /* Tamanho do X ligeiramente reduzido */
+    font-weight: normal;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+}
+
+.close-modal-button:hover,
+.close-modal-button:focus {
+    color: #ffd700; /* Cor dourada no hover */
+}
+
+.modal-message {
+    font-size: 1.2rem; /* Tamanho da fonte da mensagem ligeiramente reduzido */
+    font-weight: 800; /* Mais negrito */
+    color: #f0f0f0; /* Cor do texto da mensagem mais clara */
+    line-height: 1.8;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9); /* Sombra para o texto da mensagem mais forte */
+}
